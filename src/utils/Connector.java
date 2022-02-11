@@ -1,11 +1,12 @@
 package utils;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Connector implements ConnectionUtils{
+public class Connector implements ConnectionUtils {
     private String hostname;
     private String database;
     private String conn_user;
@@ -13,23 +14,23 @@ public class Connector implements ConnectionUtils{
     private Connection connection;
     private Statement statement;
 
-    public Connector(String hostname, String database, User user){
+    public Connector(String hostname, String database, User user) {
         this.hostname = hostname;
         this.database = database;
         this.conn_pass = user.getPassword();
         this.conn_user = user.getName();
-        try{
+        try {
             this.connection = init();
             this.statement = connection.createStatement();
-            
-        }catch(Exception exception){
+
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
-    
-    private Connection init() throws SQLException{
-        return DriverManager.getConnection(String.format("jdbc:mysql://%s:3306/%s", hostname, database), 
-            String.format("%s", conn_user), String.format("%s", conn_pass));
+
+    private Connection init() throws SQLException {
+        return DriverManager.getConnection(String.format("jdbc:mysql://%s:3306/%s", hostname, database),
+                String.format("%s", conn_user), String.format("%s", conn_pass));
     }
 
     @Override
@@ -53,12 +54,13 @@ public class Connector implements ConnectionUtils{
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        };
-        
+        }
+        ;
+
     }
 
     @Override
-    public Boolean isConnected(){
+    public Boolean isConnected() {
         try {
             return connection.isValid(3);
         } catch (SQLException e) {

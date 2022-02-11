@@ -1,8 +1,10 @@
 package main;
+
 import java.util.Scanner;
 
 import utils.Connector;
 import utils.User;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,15 +22,17 @@ public class Main {
         /* Create user object */
         User user = new User(username, password);
 
-        try{
+        try {
 
             Connector connector = new Connector(hostname, database, user);
 
-            if(connector.isConnected()) System.out.printf("Successfully connected to %s", connector.getHost());
+            if (connector.isConnected())
+                System.out.printf("Successfully connected to %s", connector.getHost());
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } {
+        }
+        {
 
         }
     }

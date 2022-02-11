@@ -7,29 +7,29 @@ public class User {
     private String name;
     private String password;
 
-    public User(String name, String password){
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 
-    public void createQuery(Connector connector){
+    public void createQuery(Connector connector) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your SQL query ");
         String query = sc.nextLine();
-        try{
+        try {
             ResultSet result = connector.query(query);
             connector.displayQuery(result);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
 }

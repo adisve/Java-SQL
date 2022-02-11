@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public interface ConnectionUtils {
-    
+
     public abstract ResultSet query(String string);
 
     public abstract String displayQuery(ResultSet result);
@@ -17,5 +17,5 @@ public interface ConnectionUtils {
     public abstract Connection getConnection();
 
     public abstract String getHost();
-    
+
 }
