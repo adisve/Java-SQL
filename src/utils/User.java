@@ -1,5 +1,8 @@
 package utils;
 
+import java.sql.ResultSet;
+import java.util.Scanner;
+
 public class User {
     private String name;
     private String password;
@@ -17,8 +20,16 @@ public class User {
         return this.password;
     }
 
-    public void createQuery(){
-        //TODO
+    public void createQuery(Connector connector){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your SQL query ");
+        String query = sc.nextLine();
+        try{
+            ResultSet result = connector.query(query);
+            connector.displayQuery(result);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
 }
