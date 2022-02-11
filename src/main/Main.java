@@ -1,17 +1,32 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+package main;
+import java.util.Scanner;
+
+import utils.Connector;
+import utils.User;
 public class Main {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Hostname: ");
+        String hostname = sc.nextLine();
+        System.out.println("Database: ");
+        String database = sc.nextLine();
+        System.out.println("Username: ");
+        String username = sc.nextLine();
+        System.out.println("Password: ");
+        String password = sc.nextLine();
+
+        /* Create user object */
+        User user = new User(username, password);
+
         try{
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "guest", "q18jpg!5&rT");
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Country LIMIT 5");
-            while(rs.next()) System.out.println(rs.getString("Code"));
-        }catch (SQLException e) {
+
+            Connector connector = new Connector(hostname, database, user);
+
+            if(connector.isConnected()) System.out.printf("Successfully connected to %s", connector.getHost());
+
+        }catch (Exception e) {
             e.printStackTrace();
         } {
 
