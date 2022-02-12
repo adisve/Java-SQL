@@ -10,8 +10,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("\nHostname >> ");
-        String hostname = sc.nextLine();
         System.out.print("\nDatabase >> ");
         String database = sc.nextLine();
         System.out.print("\nUsername >> ");
@@ -24,7 +22,7 @@ public class Main {
 
         try {
 
-            var connector = new Connector(hostname, database, user);
+            var connector = new Connector("localhost", database, user);
 
             if (connector.isConnected())
                 System.out.printf("\nSuccessfully connected to %s\n", connector.getHost());

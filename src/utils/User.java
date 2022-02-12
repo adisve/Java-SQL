@@ -1,5 +1,6 @@
 package utils;
 
+import java.lang.System;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
@@ -21,7 +22,15 @@ public class User {
     }
 
     public void createQuery(Connector connector, Scanner sc) {
+
+        System.out.println("\nType 'exit' anytime to close the program.\n");
+
         System.out.print("\nEnter your SQL query >> ");
+        if(sc.nextLine() == "exit") {
+            sc.close();
+            connector.close();
+            System.exit(0);
+        }
         String query = sc.nextLine();
         try {
             ResultSet result = connector.query(query);
