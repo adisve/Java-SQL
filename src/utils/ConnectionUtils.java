@@ -8,7 +8,7 @@ public interface ConnectionUtils {
 
     public abstract ResultSet query(String string);
 
-    public abstract String displayQuery(ResultSet result);
+    public abstract void displayQuery(ResultSet result);
 
     public abstract void close();
 

@@ -20,9 +20,8 @@ public class User {
         return this.password;
     }
 
-    public void createQuery(Connector connector) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your SQL query ");
+    public void createQuery(Connector connector, Scanner sc) {
+        System.out.print("\nEnter your SQL query >> ");
         String query = sc.nextLine();
         try {
             ResultSet result = connector.query(query);

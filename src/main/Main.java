@@ -10,30 +10,30 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Hostname: ");
+        System.out.print("\nHostname >> ");
         String hostname = sc.nextLine();
-        System.out.println("Database: ");
+        System.out.print("\nDatabase >> ");
         String database = sc.nextLine();
-        System.out.println("Username: ");
+        System.out.print("\nUsername >> ");
         String username = sc.nextLine();
-        System.out.println("Password: ");
+        System.out.print("\nPassword >> ");
         String password = sc.nextLine();
 
         /* Create user object */
-        User user = new User(username, password);
+        var user = new User(username, password);
 
         try {
 
-            Connector connector = new Connector(hostname, database, user);
+            var connector = new Connector(hostname, database, user);
 
             if (connector.isConnected())
-                System.out.printf("Successfully connected to %s", connector.getHost());
+                System.out.printf("\nSuccessfully connected to %s\n", connector.getHost());
+                while(connector.isConnected()) user.createQuery(connector, sc);
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        {
-
+        }finally{
+            sc.close();
         }
     }
 }
