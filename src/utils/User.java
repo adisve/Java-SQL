@@ -26,17 +26,19 @@ public class User {
         System.out.println("\nType 'exit' anytime to close the program.\n");
 
         System.out.print("\nEnter your SQL query >> ");
-        if(sc.nextLine() == "exit") {
+        var query = sc.nextLine();
+        if(query.equals("exit")) {
             sc.close();
             connector.close();
             System.exit(0);
         }
-        String query = sc.nextLine();
-        try {
-            ResultSet result = connector.query(query);
-            connector.displayQuery(result);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(query.matches(".*\\w.*")){
+            try {
+                ResultSet result = connector.query(query);
+                connector.displayQuery(result);
+            } catch (Exception e) {
+                System.out.println("\nCannot issue emtpy query.\n");
+            }
         }
     }
 

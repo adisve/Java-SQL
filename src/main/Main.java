@@ -19,7 +19,7 @@ public class Main {
 
         /* Create user object */
         var user = new User(username, password);
-
+        
         try {
 
             var connector = new Connector("localhost", database, user);
@@ -29,7 +29,6 @@ public class Main {
                 while(connector.isConnected()) user.createQuery(connector, sc);
 
         } catch (Exception e) {
-            e.printStackTrace();
         }finally{
             sc.close();
         }

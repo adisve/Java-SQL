@@ -61,7 +61,7 @@ public class Connector implements ConnectionUtils {
             }
             System.out.println("\n--------------------\n");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong.");
         }
     }
 
