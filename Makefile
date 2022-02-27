@@ -1,10 +1,12 @@
 
 # Defines compiler and compiler variables
-JFLAGS = -g -cp lib/mysql-connector-java-8.0.28.jar
+LIBS = lib/mysql-connector-java-8.0.28.jar
 JC = javac
+CP = bin/out/
 JVM = java
 FILE = 
 DEST = -d
+JFLAGS = 
 # Clear any default targets for building .class files
 # from .java files
 .SUFFIXES: .java .class
@@ -16,27 +18,30 @@ DEST = -d
 # File with main method
 MAIN = Main
 
+UTILS = utils
+
+PACKAGE_NAME = main.Main
 
 
 # SOURCES consists of a word for each java source file
 SOURCES = \
 		src/utils/ConnectionUtils.java \
-		src/utils/Connector.java \
 		src/utils/User.java \
-		src/main/Main.java
+		src/utils/Connector.java \
+		src/main/Main.java \
 
 all:
-		$(JC) $(JFLAGS) $(SOURCES) $(DEST) bin
+		$(JC) -cp $(LIBS):$(CP) $(SOURCES) $(DEST) bin/out/
 
 # Replaces all ending suffixes of .java with .class
 classes: $(SOURCES:.java=.class)
 
 # Default make target entry
-default: classes
+default: all
 
 # Target for running the program
-run: classes
-	$(JVM) $(MAIN) 
+run: all
+	$(JVM) -cp $(LIBS):$(CP) $(PACKAGE_NAME)
 
 # make clean will remove any created classes
 clean:

@@ -1,0 +1,401 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Feb 27 16:44:22 2022
+
+# Variables
+
+# environment
+JAVA_HOME = /etc/java-config-2/current-system-vm
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# environment
+I3SOCK = /run/user/1000/i3/ipc-socket.3183
+# makefile (from 'Makefile', line 21)
+UTILS = utils
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f88499ba-04a8-4470-afd5-bd2f498ba317.sock
+# environment
+VSCODE_CWD = /home/adis
+# environment
+XSESSION = Xfce4
+# environment
+WINDOWPATH = 8
+# makefile (from 'Makefile', line 3)
+LIBS = lib/mysql-connector-java-8.0.28.jar
+# environment
+GCC_SPECS = 
+# environment
+GDM_LANG = en_US.utf8
+# default
+MAKE_COMMAND := make
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/adis/Git/Java_SQL_Connection/Connector
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+MAIL = /var/mail/adis
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/usr/share/gdm
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/adis/.config/Code/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
+# environment
+LANG = C
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ETCKEEPER_CONF_DIR = /etc/etckeeper
+# makefile
+CURDIR := /home/adis/Git/Java_SQL_Connection/Connector
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+ 
+LESSOPEN = |lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /tmp/ssh-XXXXXXdswHy3/agent.3183
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = i3
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=2db00502-c37b-49f3-ab7b-ab8f5dae2db4&iid=2db00502-c37b-49f3-ab7b-ab8f5dae2db4&sid=2db00502-c37b-49f3-ab7b-ab8f5dae2db4","uploadToServer":true}
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# makefile (from 'Makefile', line 4)
+JC = javac
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 3314
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 5)
+CP = bin/out/utils:bin/out/main
+# environment
+MANPAGER = manpager
+# automatic
+*F = $(notdir $*)
+# environment
+MANPATH = /etc/java-config-2/current-system-vm/man:/usr/share/gcc-data/x86_64-pc-linux-gnu/11.2.0/man:/usr/share/binutils-data/x86_64-pc-linux-gnu/2.37_p1/man:/etc/java-config-2/current-system-vm/man/:/usr/local/share/man:/usr/share/man:/usr/lib/rust/man:/usr/lib/llvm/13/share/man
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-B7yNNvP8id,guid=ad2cd04feeed014b480bc10c621b6740
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+BREAKPAD_DUMP_LOCATION = /home/adis/.config/Code/exthost Crash Reports
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+INFOPATH = /usr/share/gcc-data/x86_64-pc-linux-gnu/11.2.0/info:/usr/share/binutils-data/x86_64-pc-linux-gnu/2.37_p1/info:/usr/share/info:/usr/share/info/emacs-27
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 2
+# makefile (from 'Makefile', line 6)
+JVM = java
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:/usr/lib/llvm/13/bin
+# default
+MAKEFILES := 
+# environment
+MOTD_SHOWN = pam
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 9)
+JFLAGS = 
+# makefile (from 'Makefile', line 19)
+MAIN = Main
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = adis
+# automatic
+?F = $(notdir $?)
+# environment
+GSETTINGS_BACKEND = dconf
+# environment
+XDG_SEAT = seat0
+# environment
+XDG_CURRENT_DESKTOP = i3
+# environment
+JAVAC = /etc/java-config-2/current-system-vm/bin/javac
+# automatic
++F = $(notdir $+)
+# environment
+LESS = -R -M --shift 5
+# environment
+DESKTOP_SESSION = i3
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = i3
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = adis
+# environment
+CONFIG_PROTECT_MASK = /etc/sandbox.d /etc/fonts/fonts.conf /etc/gentoo-release /etc/terminfo /etc/dconf /etc/ca-certificates.conf /etc/texmf/web2c /etc/texmf/language.dat.d /etc/texmf/language.def.d /etc/texmf/updmap.d /etc/revdep-rebuild
+# environment
+CONFIG_PROTECT = /usr/share/gnupg/qualified.txt
+# environment
+XDG_VTNR = 8
+# makefile
+.DEFAULT_GOAL := all
+# environment
+EDITOR = /bin/nano
+# environment
+DISPLAY = :1
+# environment
+GTK_MODULES = canberra-gtk-module
+# environment
+USER = adis
+# default
+MAKE_VERSION := 4.3
+# environment
+SSH_AGENT_PID = 3195
+# environment
+PAGER = /usr/bin/less
+# makefile (from 'Makefile', line 8)
+DEST = -d
+# environment
+_ = /usr/bin/make
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# makefile (from 'Makefile', line 7)
+FILE = 
+# environment
+HOME = /home/adis
+# environment
+JDK_HOME = /etc/java-config-2/current-system-vm
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-f8e231dd-1.63.2-main.sock
+# environment
+XDG_SESSION_ID = 1
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 26)
+SOURCES = src/utils/ConnectionUtils.java src/utils/User.java src/utils/Connector.java src/main/Main.java 
+# environment
+GDMSESSION = i3
+# variable set hash-table stats:
+# Load=116/1024=11%, Rehash=0, Collisions=10/152=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 66308, inode 38404730): 9 files, no impossibilities.
+
+# 9 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+%.java:
+
+%.class: %.java
+#  recipe to execute (from 'Makefile', line 16):
+	$(JC) $(JFLAGS) $*.java
+
+%.class:
+
+# 3 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+src/utils/Connector.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+default: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-27 16:42:39.58393746
+#  File has been updated.
+#  Successfully updated.
+
+.java.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 16):
+	$(JC) $(JFLAGS) $*.java
+
+# Not a target:
+.java:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 47):
+		$(RM) *.class
+
+# Not a target:
+src/utils/ConnectionUtils.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+classes: src/utils/ConnectionUtils.class src/utils/User.class src/utils/Connector.class src/main/Main.class
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all:
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
+#  recipe to execute (from 'Makefile', line 33):
+		$(JC) -cp $(CP) $(SOURCES) $(DEST) bin/out/
+
+run: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 43):
+	$(JVM) -cp $(CP) $(MAIN)
+
+# Not a target:
+src/main/Main.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/utils/User.class:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.SUFFIXES: .java .class
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=15/1024=1%, Rehash=0, Collisions=0/38=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 26 / storage = 250 B / avg = 9 B
+# current buf: size = 8162 B / used = 250 B / count = 26 / avg = 9 B
+
+# strcache performance: lookups = 44 / hit rate = 40%
+# hash-table stats:
+# Load=26/8192=0%, Rehash=0, Collisions=0/44=0%
+# Finished Make data base on Sun Feb 27 16:44:22 2022
+
+ 

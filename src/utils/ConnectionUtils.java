@@ -8,6 +8,8 @@ public interface ConnectionUtils {
 
     public abstract ResultSet query(String string);
 
+    public abstract int update(String string);
+
     public abstract void displayQuery(ResultSet result);
 
     public abstract void close();
