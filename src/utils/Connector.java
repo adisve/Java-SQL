@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSetMetaData;
 
-public class Connector{
+public class Connector implements ConnectionUtils{
     private String conn_hostname;
     private String conn_database;
     private String conn_user;
@@ -34,6 +34,7 @@ public class Connector{
                 String.format("%s", conn_user), String.format("%s", conn_pass));
     }
 
+    @Override
     public ResultSet query(String sqlString) {
         try {
             return statement.executeQuery(sqlString);
@@ -43,6 +44,7 @@ public class Connector{
         }
     }
 
+    @Override
     public void displayQuery(ResultSet result) {
         try {
             ResultSetMetaData rsmd = result.getMetaData();
@@ -63,6 +65,7 @@ public class Connector{
         }
     }
 
+    @Override
     public void close() {
         try {
             connection.close();
@@ -71,6 +74,7 @@ public class Connector{
         }
     }
 
+    @Override
     public Boolean isConnected() {
         try {
             return connection.isValid(3);
@@ -80,15 +84,17 @@ public class Connector{
         }
     }
 
+    @Override
     public Connection getConnection() {
         return this.connection;
     }
 
+    @Override
     public String getHost() {
         return this.conn_hostname;
     }
 
- 
+    @Override
     public int update(String sqlString) {
         try {
             return statement.executeUpdate(sqlString);
