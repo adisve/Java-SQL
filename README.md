@@ -1,4 +1,4 @@
-## Connect JDBC to your localhost SQL server
+## Connect with JDBC to your localhost SQL server
 
 A program which will connect your java application to your local SQL server, allowing you to query information.
 
