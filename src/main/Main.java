@@ -45,10 +45,19 @@ public class Main {
                 while(connector.isConnected()) {
 
                     System.out.println("1. Query\n2. Update/Insert/Delete\n3. Exit\n>> ");
+                    var user_input = sc.nextLine();
+                    while (true) {
+                        if(user_input.matches("^[1-9]\\d*$")){
+                            break;
+                        }else{
+                            System.out.println("\nInput has to be a number\n");
+                            System.out.println("1. Query\n2. Update/Insert/Delete\n3. Exit\n>> ");
+                            user_input = sc.nextLine();
+                        }
+                    }
+                    var options = Integer.parseInt(user_input);
 
-                    var user_input = Integer.parseInt(sc.nextLine());
-                
-                    switch (user_input) {
+                    switch (options) {
                         case 1:
                             user.selectQuery(connector, sc);
                             break;
