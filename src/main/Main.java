@@ -10,6 +10,8 @@ public class Main {
 
         String username = "guest";
         String password = "password";
+        String database = "pillow_db";
+        Menus menus = new Menus();
 
         Scanner sc = new Scanner(System.in);
 
@@ -26,9 +28,6 @@ public class Main {
             password = sc.nextLine();
 
         }
-        System.out.print("\nDatabase >> ");
-        String database = sc.nextLine();
-
         /**** Create user object ****/
         var user = new User(username, password);
         
@@ -38,40 +37,47 @@ public class Main {
 
             var connector = new Connector("localhost", database, user);
 
-            if (connector.isConnected())
-                System.out.printf("\nSuccessfully connected to %s\n", connector.getHost());
+            if(connector.isConnected()) System.out.printf("\nSuccessfully connected to %s\n", connector.getHost());
+
+            while(connector.isConnected()){
 
                 /**** Main event loop ****/
-                while(connector.isConnected()) {
-
-                    System.out.println("1. Query\n2. Update/Insert/Delete\n3. Exit\n>> ");
-                    var user_input = sc.nextLine();
-                    while (true) {
-                        if(user_input.matches("^[1-9]\\d*$")){
-                            break;
-                        }else{
-                            System.out.println("\nInput has to be a number\n");
-                            System.out.println("1. Query\n2. Update/Insert/Delete\n3. Exit\n>> ");
-                            user_input = sc.nextLine();
-                        }
-                    }
-                    var options = Integer.parseInt(user_input);
-
-                    switch (options) {
-                        case 1:
-                            user.selectQuery(connector, sc);
-                            break;
-                    
-                        case 2:
-                            user.updateQuery(connector, sc);
-                            break;
-                        
-                            case 3:
-                            connector.close();
-                        default:
-                            break;
+                System.out.println("1. SELECT\n2. UPDATE\n3. INSERT\n4. DELETE\n>> ");
+                sc.reset();
+                var user_input = sc.nextLine();
+                while (true) {
+                    if(user_input.matches("^[1-9]\\d*$")){
+                        break;
+                    }else{
+                        System.out.println("\nInput has to be a number\n");
+                        System.out.println("1. SELECT\n2. UPDATE\n3. INSERT\n4. DELETE\n>> ");
+                        user_input = sc.nextLine();
                     }
                 }
+                var options = Integer.parseInt(user_input);
+
+                switch (options) {
+                    case 1:
+                        menus.selectMenu(sc, connector);
+                        break;
+                
+                    case 2:
+                        menus.updateMenu(sc, connector);
+                        break;
+
+                    case 3:
+                        menus.insertMenu(sc, connector);
+
+                    case 4:
+                        menus.deleteMenu(sc, connector);
+
+                    case 5:
+                        connector.close();
+                    default:
+                        break;
+                }
+                
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

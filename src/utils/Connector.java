@@ -2,6 +2,7 @@ package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,9 +36,9 @@ public class Connector implements ConnectionUtils{
     }
 
     @Override
-    public ResultSet query(String sqlString) {
+    public ResultSet query(PreparedStatement sqlString) {
         try {
-            return statement.executeQuery(sqlString);
+            return sqlString.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

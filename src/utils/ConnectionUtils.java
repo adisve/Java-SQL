@@ -1,12 +1,13 @@
 package utils;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public interface ConnectionUtils {
 
-    public abstract ResultSet query(String string);
+    public abstract ResultSet query(PreparedStatement string);
 
     public abstract int update(String string);
 
