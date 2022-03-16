@@ -29,6 +29,7 @@ SOURCES = \
 		src/utils/User.java \
 		src/utils/Connector.java \
 		src/main/Main.java \
+		src/utils/Menus.java	\
 
 all:
 		$(JC) -cp $(LIBS):$(CP) $(SOURCES) $(DEST) bin/out/
