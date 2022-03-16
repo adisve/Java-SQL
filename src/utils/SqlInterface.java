@@ -2,7 +2,6 @@ package utils;
 
 import java.sql.Connection;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
