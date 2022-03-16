@@ -1,5 +1,6 @@
 package main;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import utils.*;
@@ -24,7 +25,7 @@ public class Main {
         /**** Here we attempt to establish a connection between the user and the database ****/
         try {
 
-            var connector = new Connector("localhost", main.DATABASE, user);
+            Connector connector = new Connector("localhost", main.DATABASE, user);
 
             if(connector.isConnected()) System.out.printf("\nSuccessfully connected to %s\n", connector.getHost());
 
@@ -43,7 +44,8 @@ public class Main {
                 MENUS.generalMenu(sc, option, connector);
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("Fatal error");
             e.printStackTrace();
         }finally{
             sc.close();

@@ -30,6 +30,7 @@ SOURCES = \
 		src/utils/Connector.java \
 		src/main/Main.java \
 		src/utils/Menus.java	\
+		src/utils/SqlInterface.java	\
 
 all:
 		$(JC) -cp $(LIBS):$(CP) $(SOURCES) $(DEST) bin/out/
