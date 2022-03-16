@@ -33,11 +33,11 @@ public class Main {
 
                 /**** Main event loop ****/
                 System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n>> ");
-                var user_input = sc.nextLine();
+                var user_input = sc.next();
                 while (!main.checkInput(user_input)) {
                     System.out.println("\nInput has to be a number\n");
-                    System.out.println("1. SELECT\n2. UPDATE\n3. INSERT\n4. DELETE\n>> ");
-                    user_input = sc.nextLine();
+                    System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n>> ");
+                    user_input = sc.next();
                 }
                 var option = Integer.parseInt(user_input);
                 MENUS.generalMenu(sc, option, connector);

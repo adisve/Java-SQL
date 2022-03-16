@@ -18,10 +18,10 @@ public class SqlInterface{
         this.connector = connector;
         this.connection = connector.getConnection();
         this.tableToArrayIndex = new HashMap<String, Integer>() {{
-            put("user", 0);
-            put("phone", 1);
-            put("pillow", 2);
-            put("schedule", 3);
+            put("User", 0);
+            put("Phone", 1);
+            put("Pillow", 2);
+            put("Schedule", 3);
         }};
     }
 
@@ -72,7 +72,7 @@ public class SqlInterface{
         String[] prepStmt, int tableMapIndex) throws SQLException{
         System.out.printf("Enter %s ID -> ", tableName);
             String QUERYID = sc.nextLine();
-            while(checkInput(QUERYID)){
+            while(!checkInput(QUERYID)){
                 System.out.println("Input must be integer");
                 System.out.printf("Enter %s ID -> ", tableName);
                 QUERYID = sc.nextLine();
@@ -121,13 +121,28 @@ public class SqlInterface{
         return new String[] {alarmDate, scheduleName};
     }
 
+    private void executeDelete(String tableName, Scanner sc,
+        String[] prepStmt, int tableMapIndex) throws SQLException {
+            System.out.printf("Enter %s ID -> ", tableName);
+            String QUERYID = sc.nextLine();
+            while(!checkInput(QUERYID)){
+                System.out.println("Input must be integer");
+                System.out.printf("Enter %s ID -> ", tableName);
+                QUERYID = sc.nextLine();
+            }
+            preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
+            preparedStatement.setString(1, QUERYID);
+            int res = preparedStatement.executeUpdate();
+            System.out.printf("\n%d RECORDS UPDATED\n", res);
+    }
+
     private void executeUpdate(String tableName, Scanner sc,
         String[] prepStmt, int tableMapIndex, String[] params) throws SQLException {
             int res;
             System.out.printf("Enter %s ID -> ", tableName);
             preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
             String QUERYID = sc.nextLine();
-            while(checkInput(QUERYID)){
+            while(!checkInput(QUERYID)){
                 System.out.println("Input must be integer");
                 System.out.printf("Enter %s ID -> ", tableName);
                 QUERYID = sc.nextLine();
@@ -138,7 +153,7 @@ public class SqlInterface{
                     preparedStatement.setString(1, params[0]);
                     preparedStatement.setString(2, QUERYID);
                     res = preparedStatement.executeUpdate();
-                    System.out.printf("%d records updated", res);
+                    System.out.printf("%d RECORDS UPDATED\n", res);
                     break;
                 case 1:
                     preparedStatement.setString(1, params[0]);
@@ -149,24 +164,24 @@ public class SqlInterface{
                     preparedStatement.setString(6, params[5]);
                     preparedStatement.setString(7, QUERYID);
                     res = preparedStatement.executeUpdate();
-                    System.out.printf("%d records updated", res);
+                    System.out.printf("%d RECORDS UPDATED\n", res);
                 case 2:
                     preparedStatement.setString(1, params[0]);
                     preparedStatement.setString(2, params[1]);
                     preparedStatement.setString(3, QUERYID);
+                    res = preparedStatement.executeUpdate();
+                    System.out.printf("%d RECORDS UPDATED\n", res);
                     break;
                 case 3:
                     preparedStatement.setString(1, params[0]);
                     preparedStatement.setString(2, params[1]);
                     preparedStatement.setString(3, QUERYID);
+                    res = preparedStatement.executeUpdate();
+                    System.out.printf("%d RECORDS UPDATED\n", res);
                     break;
                 default:
                     break;
             }
-    }
-
-    private void executeDelete(String tableName, Scanner sc,
-        String[] prepStmt, int tableMapIndex) {
     }
     
     private boolean checkInput(String input){
