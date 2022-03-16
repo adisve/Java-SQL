@@ -7,31 +7,36 @@ import java.util.Scanner;
 public class Menus {
     private enum SQLFUNCTIONS {
         SELECT,
-        INSERT,
         UPDATE,
         DELETE
     }
 
-    private final String[] selectStatements = {"SELECT * FROM user where user_id = ?", "SELECT * FROM phone WHERE phone.user_id = ?", 
-        "SELECT * FROM pillow WHERE pillow.user_id = ?", "SELECT * FROM schedule WHERE schedule.schedule_id = ?"};
+    private final String[] selectStatements = {
+        "SELECT * FROM user where user_id = ?",
+            "SELECT * FROM phone WHERE phone.user_id = ?", 
+                "SELECT * FROM pillow WHERE pillow.user_id = ?", 
+                    "SELECT * FROM schedule WHERE schedule.schedule_id = ?"};
 
-    private final String[] deleteStatements = 
-    {"DELETE user, phone, schedule, theme FROM user INNER JOIN phone ON phone.user_id = user.user_id " +
+    private final String[] updateStatements = {
+        "UPDATE user SET password = ? WHERE user.user_id = ?",
+            "UPDATE phone SET imei = ?, uuid = ?, mac = ?, brand = ?, model = ?, manufacturer = ? WHERE phone.user_id = ?",
+                "UPDATE pillow SET model = ?, version_number = ? WHERE pillow.user_id = ?",
+                    "UPDATE schedule SET alarm_date = ?, schedule_name = ? WHERE schedule.schedule_id = ?"
+    };
+
+    private final String[] deleteStatements = {
+        "DELETE user, phone, schedule, theme FROM user INNER JOIN phone ON phone.user_id = user.user_id " +
         "INNER JOIN schedule ON schedule.user_id = user.user_id INNER JOIN theme ON " +
-            "theme.schedule_id = schedule.schedule_id WHERE user.name = ?", "DELETE FROM schedule WHERE name = ?", 
-        "DELETE FROM pillow WHERE pillow_id = ?", "DELETE FROM bluetooth_module WHERE module_id = ?", "DELETE FROM theme WHERE theme_id = ?"};
+            "theme.schedule_id = schedule.schedule_id WHERE user.user_id = ?", 
+            "DELETE phone, schedule, pillow FROM phone INNER JOIN schedule ON schedule.user_id = phone.user_id " +
+                "INNER JOIN pillow ON pillow.user_id = phone.user_id INNER JOIN pillow ON pillow.user_id = phone.user_id WHERE phone.user_id = ?", 
+                "DELETE FROM pillow WHERE pillow_id = ?"};
 
-    private final String[] insertStatements = {"INSERT INTO user(email, password, name) VALUES(?, ?, ?)", 
-        "INSERT INTO schedule(alarm_date, user_id, schedule_name) VALUES(?, ?, ?)", "INSERT INTO pillow(model, user_id, version_number)",
-        "INSERT INTO bluetooth_module(mac, uuid, pillow_id) VALUES(?, ?, ?)", "INSERT INTO theme(color, pattern, movement, speed, schedule_id) VALUES(?, ?, ?, ?, ?)"};
-
-    private final String[] updateStatements = {};
     
     private final Map<Integer, String[]> statements = new HashMap<Integer, String[]>() {{
         put(1, selectStatements);
-        put(2, deleteStatements);
-        put(3, insertStatements);
-        put(4, updateStatements);
+        put(2, updateStatements);
+        put(3, deleteStatements);
     }};
 
     private final Map<Integer, String> tableNames = new HashMap<Integer, String>(){{
@@ -44,13 +49,16 @@ public class Menus {
 
     public void generalMenu(Scanner sc, int option, Connector connector) throws SQLException{
         Menus menus = new Menus();
+        System.out.println(option);
         String[] prepStmt = getPrepStmt(option);
-        SQLFUNCTIONS funcType = SQLFUNCTIONS.values()[option];
+        SQLFUNCTIONS funcType = SQLFUNCTIONS.values()[option-1];
         SqlInterface sqlInterface = new SqlInterface(connector);
         
         System.out.printf("\nWhat table do you want to %s?\n", funcType.toString());
+        System.out.println("1. User\t2. Phone");
+        System.out.println("2. Pillow\t3. Schedule");
         var input = sc.nextLine();
-        while (menus.checkInput(input)) {
+        while (!menus.checkInput(input)) {
             System.out.println("\nInput has to be a number\n");
             System.out.println("1. User\t2. Phone");
             System.out.println("2. Pillow\t3. Schedule");
@@ -62,14 +70,11 @@ public class Menus {
             case SELECT:
                 sqlInterface.select(tableName, prepStmt, sc);
                 break;
-            case INSERT:
-                sqlInterface.insert(tableName, prepStmt, sc);
+            case DELETE:
+                sqlInterface.delete(tableName, prepStmt, sc);
                 break;
             case UPDATE:
                 sqlInterface.update(tableName, prepStmt, sc);
-                break;
-            case DELETE:
-                sqlInterface.delete(tableName, prepStmt, sc);
                 break;
             default:
                 break;

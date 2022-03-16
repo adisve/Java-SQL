@@ -32,10 +32,9 @@ public class Main {
             while(connector.isConnected()){
 
                 /**** Main event loop ****/
-                System.out.println("1. SELECT\n2. UPDATE\n3. INSERT\n4. DELETE\n>> ");
-                sc.reset();
+                System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n>> ");
                 var user_input = sc.nextLine();
-                while (main.checkInput(user_input)) {
+                while (!main.checkInput(user_input)) {
                     System.out.println("\nInput has to be a number\n");
                     System.out.println("1. SELECT\n2. UPDATE\n3. INSERT\n4. DELETE\n>> ");
                     user_input = sc.nextLine();
