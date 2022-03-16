@@ -32,7 +32,7 @@ public class Main {
             while(connector.isConnected()){
 
                 /**** Main event loop ****/
-                System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n>> ");
+                System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n4. Exit\n>> ");
                 var user_input = sc.next();
                 while (!main.checkInput(user_input)) {
                     System.out.println("\nInput has to be a number\n");
@@ -40,9 +40,12 @@ public class Main {
                     user_input = sc.next();
                 }
                 var option = Integer.parseInt(user_input);
-                MENUS.generalMenu(sc, option, connector);
+                if(option != 0){
+                    MENUS.generalMenu(sc, option, connector);
+                }else{
+                    break;
+                }
             }
-
         } catch (SQLException e) {
             System.out.println("Fatal error");
             e.printStackTrace();
