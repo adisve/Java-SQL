@@ -48,33 +48,42 @@ public class Menus {
 
 
     public void generalMenu(Scanner sc, int option, Connector connector) throws SQLException{
+        sc.reset();
         Menus menus = new Menus();
-        System.out.println(option);
         String[] prepStmt = getPrepStmt(option);
         SQLFUNCTIONS funcType = SQLFUNCTIONS.values()[option-1];
         DatabaseConnection databaseConnection = new DatabaseConnection(connector);
         
         System.out.printf("\nWhat table do you want to %s?\n", funcType.toString());
         System.out.println("1. User\t2. Phone");
-        System.out.println("2. Pillow\t3. Schedule");
-        var input = sc.nextLine();
+        System.out.println("3. Pillow\t4. Schedule");
+        var input = sc.next();
         while (!menus.checkInput(input)) {
-            System.out.println("\nInput has to be a number\n");
+            System.out.println("\nInput has to be a number in the range 1 - 4\n");
             System.out.println("1. User\t2. Phone");
-            System.out.println("2. Pillow\t3. Schedule");
-            input = sc.nextLine();
+            System.out.println("3. Pillow\t4. Schedule");
+            input = sc.next();
         }
         var tableName = getTableName(Integer.parseInt(input));
-
+        sc.reset();
+        System.out.printf("Enter %s PK -> ", tableName);
+        String QUERYID = sc.next();
+        while(!checkInputId(QUERYID)){
+            System.out.println("Input must be integer");
+            System.out.printf("Enter %s PK -> ", tableName);
+            QUERYID = sc.next();
+        }
         switch (funcType) {
             case SELECT:
-                databaseConnection.select(tableName, prepStmt, sc);
+                databaseConnection.select(tableName, prepStmt, QUERYID);
                 break;
             case DELETE:
-                databaseConnection.delete(tableName, prepStmt, sc);
+                databaseConnection.delete(tableName,
+                    prepStmt, QUERYID);
                 break;
             case UPDATE:
-                databaseConnection.update(tableName, prepStmt, sc);
+                databaseConnection.update(tableName, prepStmt,
+                    sc, QUERYID);
                 break;
             default:
                 break;
@@ -85,7 +94,10 @@ public class Menus {
         return statements.get(option);
     }
     private boolean checkInput(String input){
-        return input.matches("^[0-9]{1,3}");
+        return input.matches("[1-4]?");
+    }
+    private boolean checkInputId(String input){
+        return input.matches("^[1-9]\\d*$");
     }
     private String getTableName(int option){
         return tableNames.get(option);

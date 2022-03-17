@@ -32,15 +32,15 @@ public class Main {
             while(connector.isConnected()){
 
                 /**** Main event loop ****/
-                System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n4. Exit\n>> ");
+                System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n4. EXIT\n>> ");
                 var user_input = sc.next();
                 while (!main.checkInput(user_input)) {
-                    System.out.println("\nInput has to be a number\n");
-                    System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n>> ");
+                    System.out.println("\nInput has to be a number in the range 1 - 4\n");
+                    System.out.println("1. SELECT\n2. UPDATE\n3. DELETE\n4. EXIT>> ");
                     user_input = sc.next();
                 }
-                var option = Integer.parseInt(user_input);
-                if(option != 0){
+                int option = Integer.parseInt(user_input);
+                if(option != 4){
                     MENUS.generalMenu(sc, option, connector);
                 }else{
                     break;
@@ -55,7 +55,7 @@ public class Main {
     }
 
     private boolean checkInput(String input){
-        return input.matches("^[1-9]\\d*$");
+        return input.matches("[1-4]?");
     }
 }
 

@@ -26,36 +26,36 @@ public class DatabaseConnection{
     }
 
     public void select(String tableName,
-        String[] prepStmt, Scanner sc) throws SQLException {
+        String[] prepStmt, String QUERYID) throws SQLException {
             System.out.println(tableName);
             int tableMapIndex = tableToArrayIndex.get(tableName);
-            executeQuery(tableName, sc, prepStmt, tableMapIndex);
+            executeQuery(tableName, QUERYID, prepStmt, tableMapIndex);
         }
 
     public void update(String tableName, 
-        String[] prepStmt, Scanner sc) throws SQLException{
+        String[] prepStmt, Scanner sc, String QUERYID) throws SQLException{
             int tableMapIndex = tableToArrayIndex.get(tableName);
             String[] parameters;
             switch (tableMapIndex) {
                 case 0:
                     parameters = updateUser(sc);
-                    executeUpdate(tableName, sc, 
-                        prepStmt, tableMapIndex, parameters);
+                    executeUpdate(tableName, tableMapIndex,
+                        prepStmt, parameters, QUERYID);
                     break;
                 case 1:
                     parameters = updatePhone(sc);
-                    executeUpdate(tableName, sc, 
-                        prepStmt, tableMapIndex, parameters);
+                    executeUpdate(tableName, tableMapIndex,
+                    prepStmt, parameters, QUERYID);
                     break;
                 case 2:
                     parameters = updatePillow(sc);
-                    executeUpdate(tableName, sc, 
-                        prepStmt, tableMapIndex, parameters);
+                        executeUpdate(tableName, tableMapIndex,
+                    prepStmt, parameters, QUERYID);
                     break;
                 case 3:
                     parameters = updateSchedule(sc);
-                    executeUpdate(tableName, sc, 
-                        prepStmt, tableMapIndex, parameters);
+                    executeUpdate(tableName, tableMapIndex,
+                        prepStmt, parameters, QUERYID);
                     break;
                 default:
                     break;
@@ -63,25 +63,11 @@ public class DatabaseConnection{
         }
 
     public void delete(String tableName, 
-        String[] prepStmt, Scanner sc) throws SQLException{
-            int tableMapIndex = tableToArrayIndex.get(tableName);
-            executeDelete(tableName, sc, prepStmt, tableMapIndex);
-        }
-    
-    public void executeQuery(String tableName, Scanner sc,
-        String[] prepStmt, int tableMapIndex) throws SQLException{
-        System.out.printf("Enter %s ID -> ", tableName);
-            String QUERYID = sc.nextLine();
-            while(!checkInput(QUERYID)){
-                System.out.println("Input must be integer");
-                System.out.printf("Enter %s ID -> ", tableName);
-                QUERYID = sc.nextLine();
-            }
-            preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
-            preparedStatement.setString(1, QUERYID);
-            rs = preparedStatement.executeQuery();
-            connector.displayQuery(rs); 
+    String[] prepStmt, String QUERYID) throws SQLException{
+        int tableMapIndex = tableToArrayIndex.get(tableName);
+        executeDelete(tableName, prepStmt, tableMapIndex, QUERYID);
     }
+    
     
     private String[] updateUser(Scanner sc) {
         System.out.println("New password: ");
@@ -120,40 +106,20 @@ public class DatabaseConnection{
         String scheduleName = sc.nextLine();
         return new String[] {alarmDate, scheduleName};
     }
+    
 
-    private void executeDelete(String tableName, Scanner sc,
-        String[] prepStmt, int tableMapIndex) throws SQLException {
-            System.out.printf("Enter %s ID -> ", tableName);
-            String QUERYID = sc.nextLine();
-            while(!checkInput(QUERYID)){
-                System.out.println("Input must be integer");
-                System.out.printf("Enter %s ID -> ", tableName);
-                QUERYID = sc.nextLine();
-            }
-            preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
-            preparedStatement.setString(1, QUERYID);
-            int res = preparedStatement.executeUpdate();
-            System.out.printf("\n%d RECORDS UPDATED\n", res);
-    }
+    
 
-    private void executeUpdate(String tableName, Scanner sc,
-        String[] prepStmt, int tableMapIndex, String[] params) throws SQLException {
+    private void executeUpdate(String tableName, int tableMapIndex,
+        String[] prepStmt, String[] params, String QUERYID) throws SQLException {
             int res;
-            System.out.printf("Enter %s ID -> ", tableName);
             preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
-            String QUERYID = sc.nextLine();
-            while(!checkInput(QUERYID)){
-                System.out.println("Input must be integer");
-                System.out.printf("Enter %s ID -> ", tableName);
-                QUERYID = sc.nextLine();
-            }
-
             switch (tableMapIndex) {
                 case 0:
                     preparedStatement.setString(1, params[0]);
                     preparedStatement.setString(2, QUERYID);
                     res = preparedStatement.executeUpdate();
-                    System.out.printf("%d RECORDS UPDATED\n", res);
+                    System.out.printf("RECORDS UPDATED -> %d\n", res);
                     break;
                 case 1:
                     preparedStatement.setString(1, params[0]);
@@ -164,27 +130,41 @@ public class DatabaseConnection{
                     preparedStatement.setString(6, params[5]);
                     preparedStatement.setString(7, QUERYID);
                     res = preparedStatement.executeUpdate();
-                    System.out.printf("%d RECORDS UPDATED\n", res);
+                    System.out.printf("RECORDS UPDATED -> %d\n", res);
                 case 2:
                     preparedStatement.setString(1, params[0]);
                     preparedStatement.setString(2, params[1]);
                     preparedStatement.setString(3, QUERYID);
                     res = preparedStatement.executeUpdate();
-                    System.out.printf("%d RECORDS UPDATED\n", res);
+                    System.out.printf("RECORDS UPDATED -> %d\n", res);
                     break;
                 case 3:
                     preparedStatement.setString(1, params[0]);
                     preparedStatement.setString(2, params[1]);
                     preparedStatement.setString(3, QUERYID);
                     res = preparedStatement.executeUpdate();
-                    System.out.printf("%d RECORDS UPDATED\n", res);
+                    System.out.printf("RECORDS UPDATED -> %d\n", res);
                     break;
                 default:
                     break;
             }
     }
-    
-    private boolean checkInput(String input){
-        return input.matches("^[1-9]\\d*$");
+
+    private void executeDelete(String tableName, String[] prepStmt,
+        int tableMapIndex, String QUERYID) throws SQLException {
+            preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
+            preparedStatement.setString(1, QUERYID);
+            int res = preparedStatement.executeUpdate();
+            System.out.printf("\nRECORDS UPDATED -> %d\n", res);
     }
+
+    public void executeQuery(String tableName, String QUERYID,
+        String[] prepStmt, int tableMapIndex) throws SQLException{
+        preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
+        preparedStatement.setString(1, QUERYID);
+        rs = preparedStatement.executeQuery();
+        connector.displayQuery(rs); 
+    }
+    
+    
 }
