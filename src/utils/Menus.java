@@ -52,7 +52,7 @@ public class Menus {
         System.out.println(option);
         String[] prepStmt = getPrepStmt(option);
         SQLFUNCTIONS funcType = SQLFUNCTIONS.values()[option-1];
-        SqlInterface sqlInterface = new SqlInterface(connector);
+        DatabaseConnection databaseConnection = new DatabaseConnection(connector);
         
         System.out.printf("\nWhat table do you want to %s?\n", funcType.toString());
         System.out.println("1. User\t2. Phone");
@@ -68,13 +68,13 @@ public class Menus {
 
         switch (funcType) {
             case SELECT:
-                sqlInterface.select(tableName, prepStmt, sc);
+                databaseConnection.select(tableName, prepStmt, sc);
                 break;
             case DELETE:
-                sqlInterface.delete(tableName, prepStmt, sc);
+                databaseConnection.delete(tableName, prepStmt, sc);
                 break;
             case UPDATE:
-                sqlInterface.update(tableName, prepStmt, sc);
+                databaseConnection.update(tableName, prepStmt, sc);
                 break;
             default:
                 break;

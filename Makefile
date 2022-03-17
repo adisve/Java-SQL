@@ -30,7 +30,7 @@ SOURCES = \
 		src/utils/Connector.java \
 		src/main/Main.java \
 		src/utils/Menus.java	\
-		src/utils/SqlInterface.java	\
+		src/utils/DatabaseConnection.java	\
 
 all:
 		$(JC) -cp $(LIBS):$(CP) $(SOURCES) $(DEST) bin/out/
@@ -43,7 +43,7 @@ default: all
 
 # Target for running the program
 run: all
-	$(JVM) -cp $(LIBS):$(CP) $(PACKAGE_NAME)
+		$(JVM) -cp $(LIBS):$(CP) $(PACKAGE_NAME)
 
 # make clean will remove any created classes
 clean:

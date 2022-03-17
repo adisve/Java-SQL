@@ -7,14 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SqlInterface{
+public class DatabaseConnection{
     private ResultSet rs;
     private final Connector connector;
     private final Connection connection;
     private PreparedStatement preparedStatement;
     private final HashMap<String, Integer> tableToArrayIndex;
     
-    public SqlInterface(Connector connector){
+    public DatabaseConnection(Connector connector){
         this.connector = connector;
         this.connection = connector.getConnection();
         this.tableToArrayIndex = new HashMap<String, Integer>() {{
