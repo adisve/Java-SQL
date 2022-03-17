@@ -49,18 +49,18 @@ public class Connector implements ConnectionUtils{
     public void displayQuery(ResultSet result) {
         try {
             ResultSetMetaData rsmd = result.getMetaData();
-            System.out.println("\n--------------------\n");
+            System.out.println("\n------------------------------\n");
             for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                 System.out.print(rsmd.getColumnLabel(i) + "\t");
             }
             System.out.println("\n");
             while(result.next()){
-                System.out.println("\n--------------------\n");
+                System.out.println("\n--------------------------\n");
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     System.out.print(result.getString(i) + "\t");
                 }
             }
-            System.out.println("\n--------------------\n");
+            System.out.println("\n--------------------------\n");
         } catch (SQLException e) {
             System.out.println("Something went wrong.");
         }
