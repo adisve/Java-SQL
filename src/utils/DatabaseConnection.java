@@ -112,43 +112,17 @@ public class DatabaseConnection{
     
 
     private void executeUpdate(String tableName, int tableMapIndex,
-        String[] prepStmt, String[] params, String QUERYID) throws SQLException {
-            int res;
-            preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
-            switch (tableMapIndex) {
-                case 0:
-                    preparedStatement.setString(1, params[0]);
-                    preparedStatement.setString(2, QUERYID);
-                    res = preparedStatement.executeUpdate();
-                    System.out.printf("RECORDS UPDATED -> %d\n", res);
-                    break;
-                case 1:
-                    preparedStatement.setString(1, params[0]);
-                    preparedStatement.setString(2, params[1]);
-                    preparedStatement.setString(3, params[2]);
-                    preparedStatement.setString(4, params[3]);
-                    preparedStatement.setString(5, params[4]);
-                    preparedStatement.setString(6, params[5]);
-                    preparedStatement.setString(7, QUERYID);
-                    res = preparedStatement.executeUpdate();
-                    System.out.printf("RECORDS UPDATED -> %d\n", res);
-                case 2:
-                    preparedStatement.setString(1, params[0]);
-                    preparedStatement.setString(2, params[1]);
-                    preparedStatement.setString(3, QUERYID);
-                    res = preparedStatement.executeUpdate();
-                    System.out.printf("RECORDS UPDATED -> %d\n", res);
-                    break;
-                case 3:
-                    preparedStatement.setString(1, params[0]);
-                    preparedStatement.setString(2, params[1]);
-                    preparedStatement.setString(3, QUERYID);
-                    res = preparedStatement.executeUpdate();
-                    System.out.printf("RECORDS UPDATED -> %d\n", res);
-                    break;
-                default:
-                    break;
-            }
+    String[] prepStmt, String[] params, String QUERYID) throws SQLException {
+        preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
+        int res;
+        int i;
+        int j;
+        for (i = 1, j = 0; i < params.length+1; i++, j++) {
+            preparedStatement.setString(i, params[j]);
+        }
+        preparedStatement.setString(i, QUERYID);
+        res = preparedStatement.executeUpdate();
+        System.out.printf("RECORDS UPDATED -> %d\n", res);
     }
 
     private void executeDelete(String tableName, String[] prepStmt,
