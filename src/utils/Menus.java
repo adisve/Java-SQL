@@ -47,7 +47,6 @@ public class Menus {
         put(4, "Schedule");
     }};
 
-
     public void generalMenu(Scanner sc, int option, Connector connector) throws SQLException{
         sc.reset();
         Menus menus = new Menus();
@@ -69,6 +68,7 @@ public class Menus {
         sc.reset();
         System.out.printf("Enter %s PK -> ", tableName);
         String QUERYID = sc.next();
+
         while(!checkInputId(QUERYID)){
             System.out.println("Input must be integer");
             System.out.printf("Enter %s PK -> ", tableName);

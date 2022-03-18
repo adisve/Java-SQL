@@ -2,7 +2,6 @@ package main;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-
 import utils.*;
 
 public class Main {
@@ -13,9 +12,7 @@ public class Main {
     final static Menus MENUS = new Menus();
 
     public static void main(String[] args) {
-
         Main main = new Main();
-
         Scanner sc = new Scanner(System.in);
 
         /**** Create user object ****/
@@ -24,9 +21,7 @@ public class Main {
 
         /**** Here we attempt to establish a connection between the user and the database ****/
         try {
-
             Connector connector = new Connector("localhost", main.DATABASE, user);
-
             if(connector.isConnected()) System.out.printf("\nSuccessfully connected to %s\n", connector.getHost());
 
             while(connector.isConnected()){
@@ -47,7 +42,7 @@ public class Main {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Fatal error");
+            System.out.println("Fatal error\n");
             e.printStackTrace();
         }finally{
             sc.close();
@@ -58,4 +53,3 @@ public class Main {
         return input.matches("[1-4]?");
     }
 }
-

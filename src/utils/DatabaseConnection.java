@@ -69,7 +69,6 @@ public class DatabaseConnection{
         executeDelete(tableName, prepStmt, tableMapIndex, QUERYID);
     }
     
-    
     private String[] updateUser(Scanner sc) {
         System.out.println("New password: ");
         String password = sc.next();
@@ -107,9 +106,6 @@ public class DatabaseConnection{
         String scheduleName = sc.next();
         return new String[] {alarmDate, scheduleName};
     }
-    
-
-    
 
     private void executeUpdate(String tableName, int tableMapIndex,
     String[] prepStmt, String[] params, String QUERYID) throws SQLException {
