@@ -64,46 +64,48 @@ public class DatabaseConnection{
 
     public void delete(String tableName, 
     String[] prepStmt, String QUERYID) throws SQLException{
+        System.out.println(tableName);
         int tableMapIndex = tableToArrayIndex.get(tableName);
+        System.out.println(tableMapIndex);
         executeDelete(tableName, prepStmt, tableMapIndex, QUERYID);
     }
     
     
     private String[] updateUser(Scanner sc) {
         System.out.println("New password: ");
-        String password = sc.nextLine();
+        String password = sc.next();
         return new String[] {password};
     }
 
     private String[] updatePhone(Scanner sc) {
         System.out.println("New IMEI: ");
-        String imei = sc.nextLine();
+        String imei = sc.next();
         System.out.println("New UUID: ");
-        String uuid = sc.nextLine();
+        String uuid = sc.next();
         System.out.println("New MAC: ");
-        String mac = sc.nextLine();
+        String mac = sc.next();
         System.out.println("New Brand: ");
-        String brand = sc.nextLine();
+        String brand = sc.next();
         System.out.println("New Model: ");
-        String model = sc.nextLine();
+        String model = sc.next();
         System.out.println("New Manufacturer: ");
-        String man = sc.nextLine();
+        String man = sc.next();
         return new String[] {imei, uuid, mac, brand, model, man};
     }
 
     private String[] updatePillow(Scanner sc) {
         System.out.println("New Model: ");
-        String model = sc.nextLine();
+        String model = sc.next();
         System.out.println("New Version number: ");
-        String versionNum = sc.nextLine();
+        String versionNum = sc.next();
         return new String[] {model, versionNum};
     }
 
     private String[] updateSchedule(Scanner sc) {
         System.out.println("New alarm date: ");
-        String alarmDate = sc.nextLine();
+        String alarmDate = sc.next();
         System.out.println("New schedule name: ");
-        String scheduleName = sc.nextLine();
+        String scheduleName = sc.next();
         return new String[] {alarmDate, scheduleName};
     }
     

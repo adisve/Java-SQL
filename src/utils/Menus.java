@@ -29,8 +29,9 @@ public class Menus {
         "INNER JOIN schedule ON schedule.user_id = user.user_id INNER JOIN theme ON " +
             "theme.schedule_id = schedule.schedule_id WHERE user.user_id = ?", 
             "DELETE phone, schedule, pillow FROM phone INNER JOIN schedule ON schedule.user_id = phone.user_id " +
-                "INNER JOIN pillow ON pillow.user_id = phone.user_id INNER JOIN pillow ON pillow.user_id = phone.user_id WHERE phone.user_id = ?", 
-                "DELETE FROM pillow WHERE pillow_id = ?"};
+                "INNER JOIN pillow ON pillow.user_id = phone.user_id WHERE phone.user_id = ?", 
+                "DELETE FROM pillow WHERE pillow.pillow_id = ?",
+                "DELETE FROM schedule WHERE schedule.schedule_id = ?"};
 
     
     private final Map<Integer, String[]> statements = new HashMap<Integer, String[]>() {{
@@ -49,6 +50,7 @@ public class Menus {
 
     public void generalMenu(Scanner sc, int option, Connector connector) throws SQLException{
         sc.reset();
+        System.out.println("IN GENERALMENU");
         Menus menus = new Menus();
         String[] prepStmt = getPrepStmt(option);
         SQLFUNCTIONS funcType = SQLFUNCTIONS.values()[option-1];
