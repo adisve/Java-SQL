@@ -27,7 +27,6 @@ public class DatabaseConnection{
 
     public void select(String tableName,
         String[] prepStmt, String QUERYID) throws SQLException {
-            System.out.println(tableName);
             int tableMapIndex = tableToArrayIndex.get(tableName);
             executeQuery(tableName, QUERYID, prepStmt, tableMapIndex);
         }
