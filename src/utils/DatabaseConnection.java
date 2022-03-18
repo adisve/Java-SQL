@@ -160,7 +160,7 @@ public class DatabaseConnection{
             System.out.printf("\nRECORDS UPDATED -> %d\n", res);
     }
 
-    public void executeQuery(String tableName, String QUERYID,
+    private void executeQuery(String tableName, String QUERYID,
         String[] prepStmt, int tableMapIndex) throws SQLException{
         preparedStatement = connection.prepareStatement(prepStmt[tableMapIndex]);
         preparedStatement.setString(1, QUERYID);
