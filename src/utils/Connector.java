@@ -25,7 +25,7 @@ public class Connector implements ConnectionUtils{
             this.connection = init();
             this.statement = connection.createStatement();
 
-        } catch (e SQLException) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
