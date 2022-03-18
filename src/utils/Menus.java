@@ -50,7 +50,6 @@ public class Menus {
 
     public void generalMenu(Scanner sc, int option, Connector connector) throws SQLException{
         sc.reset();
-        System.out.println("IN GENERALMENU");
         Menus menus = new Menus();
         String[] prepStmt = getPrepStmt(option);
         SQLFUNCTIONS funcType = SQLFUNCTIONS.values()[option-1];
