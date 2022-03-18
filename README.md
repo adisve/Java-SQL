@@ -85,22 +85,30 @@ These are the necessary libraries, binaries and general requirements
 1. Get the SQL ddl for the database at [Database-SQL](https://github.com/adisve/Java-SQL/blob/main/DATABASE.sql) and
    run it in MySQL server. A user called 'API' with the password 'P@sSw0r_D' is also required.
    
-2. Clone the repo
+2. Create a new user called "API" as root user in your MySQL server.
+    ```sh
+    CREATE USER 'API'@'localhost' IDENTIFIED BY 'P@sSw0r_D;'
+    ```
+    Now grant all privileges to user
+    ```sh
+    GRANT ALL PRIVILEGES ON pillow_db TO 'API'@'localhost'
+    ```
+3. Clone the repo
    ```sh
    git clone https://github.com/adisve/Java-SQL.git
    ```
    
-3. Cd into directory
+4. Cd into directory
    ```sh
    cd Java-SQL
    ```
    
-4. Build the project with make
+5. Build the project with make
    ```rs
    make
    ```
    
-5. Run the project
+6. Run the project
    ```rs
    make run
    ```
